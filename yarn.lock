@@ -1107,6 +1107,11 @@ jasmine-spec-reporter@^7.0.0:
   dependencies:
     colors "1.4.0"
 
+jasmine-supertest@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/jasmine-supertest/-/jasmine-supertest-1.0.0.tgz#ccc2da095686fa1867dc606526521da2c683ad4e"
+  integrity sha512-/8EM9Ojq0TOD2Mzp64yrePj06IrC+SxQ79QSezXeaAvD08W3O4y5nofbXLC0t/vb1PrlGH7jJ2Lwd9ETSqXH3A==
+
 jasmine@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/jasmine/-/jasmine-4.5.0.tgz#8d3c0d0a33a61e4d05c9f9747ee5dfaf6f7b5d3d"

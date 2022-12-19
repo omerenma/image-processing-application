@@ -12,12 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const supertest_1 = __importDefault(require("supertest"));
-const images_1 = __importDefault(require("../src/routes/api/images"));
-const request = (0, supertest_1.default)(images_1.default);
+const server_1 = __importDefault(require("../server"));
+const supertest = require('supertest');
+const request = supertest(server_1.default);
 describe('Test endpoint responses', () => {
     it('gets the endpoint', () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request.get('/images');
+        const response = yield request.get('/api/images');
+        console.log(response.status, 'route test');
         expect(response.status).toBe(200);
     }));
 });

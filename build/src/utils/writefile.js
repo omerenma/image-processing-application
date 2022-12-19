@@ -36,7 +36,7 @@ exports.writeFileToDisk = void 0;
 const fs = __importStar(require("node:fs/promises"));
 const writeFileToDisk = (filename) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield fs.writeFile('dirname', `\n${filename}`, { flag: 'a+' })
+        yield fs.writeFile('dirname.txt', `\n${filename}`, { flag: 'a+' })
             .then(data => console.log(data, 'data'));
     }
     catch (error) {

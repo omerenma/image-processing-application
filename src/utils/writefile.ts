@@ -3,7 +3,7 @@ import path from 'path'
 
 export const writeFileToDisk = async (filename: string) => {
     try {
-        await fs.writeFile('dirname', `\n${filename}`, {flag:'a+'})
+        await fs.writeFile('dirname.txt', `\n${filename}`, {flag:'a+'})
         .then(data => console.log(data, 'data'))
      
     } catch (error) {

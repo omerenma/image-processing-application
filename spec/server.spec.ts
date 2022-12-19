@@ -1,16 +1,17 @@
+import { Express } from 'express';
+import server from '../server'
+const supertest = require('supertest')
 
-import supertest from 'supertest'
-import imagesRouter from '../src/routes/api/images';
-
-const request = supertest(imagesRouter);
+const request = supertest(server);
 
 describe('Test endpoint responses', () => {
     it('gets the endpoint', async () => {
-        const response = await request.get('/images')
+        const response = await request.get('/api/images')
         expect(response.status).toBe(200);
-        
     })
+
 })
+
 
 
 

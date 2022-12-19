@@ -10,16 +10,18 @@ interface Props {
     height:number
 }
 
-const imageProcessedWithSharp = (props: Props): string => {
-    console.log(props.path, 'pathh')
-    const readImage = fs.createReadStream(props.path)
-    let transform = sharp()
+const imageProcessedWithSharp = (path:string, format:string, width:number, height:number): string => {
+    const readImage = fs.createReadStream(path)
+      let transform = sharp()
 
-    if (props.format) {
-        transform = transform.toFormat(props.format)
+    if (format) {
+        transform = transform.toFormat(format)
     }
-    if (props.width || props.height) {
-        transform = transform.resize(props.width, props.height)
+    if (width || height) {
+        transform = transform.resize(width, height)
+    }
+    if (readImage.path === undefined) {
+        console.log('Image not found')
     }
     return readImage.pipe(transform)
  }
