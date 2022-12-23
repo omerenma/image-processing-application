@@ -1,6 +1,6 @@
-import express, {Express} from 'express'
-const app = express();
+import express, {Application} from 'express'
 import { imagesRouter} from './src/routes/api/images'
+const app: Application = express();
 
 
 app.use('/api', imagesRouter)

@@ -22,25 +22,17 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.writeFileToDisk = void 0;
+// import  fs from 'fs'
 const fs = __importStar(require("node:fs/promises"));
-const writeFileToDisk = (filename) => __awaiter(void 0, void 0, void 0, function* () {
+const writeFileToDisk = (file) => {
     try {
-        yield fs.writeFile('dirname.txt', `\n${filename}`, { flag: 'a+' })
-            .then(data => console.log(data, 'data'));
+        fs.writeFile('new_path', file);
+        //  fs.writeFileSync('dirname', file,  {flag:'a+'})
     }
     catch (error) {
         console.log(error, 'error');
     }
-});
+};
 exports.writeFileToDisk = writeFileToDisk;

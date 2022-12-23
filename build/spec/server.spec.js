@@ -14,11 +14,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const server_1 = __importDefault(require("../server"));
 const supertest = require('supertest');
+const { imagesRouter } = require('../src/routes/api/images');
 const request = supertest(server_1.default);
 describe('Test endpoint responses', () => {
+    it('Gets first endpoint at :5000/', () => __awaiter(void 0, void 0, void 0, function* () {
+        yield request.get('/api/');
+    }));
     it('gets the endpoint', () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request.get('/api/images');
-        console.log(response.status, 'route test');
+        const response = yield request.get('/api/images?filename&width&height');
         expect(response.status).toBe(200);
     }));
 });

@@ -1,11 +1,17 @@
-import express, { Request, Response } from 'express'
+import express, {Application, Request, Response } from 'express'
+import sharp from 'sharp'
 import path from 'path'
-const imageProcessedWithSharp = require ('../../imageProcessingWithSharp')
 import { writeFileToDisk} from '../../utils/writefile'
-export const imagesRouter = express()
+import { resize_image } from '../../utils/image_resize'
+import {imageProcessedWithSharp} from '../../utils/imageProcessingWithSharp'
+export const imagesRouter: Application = express()
 
 
+imagesRouter.get("/", (req: Request, res: Response) => {
+     const fileLocation = path.resolve(__dirname, `../../images/encenadaport.jpg`)
+     res.sendFile(`image/${fileLocation}`)
 
+})
 imagesRouter.get('/images', (req: Request, res: Response) => {
     const filename = req.query.filename as string    
     const fileLocation = path.resolve(__dirname, `../../images/${filename}.jpg`)
@@ -14,29 +20,19 @@ imagesRouter.get('/images', (req: Request, res: Response) => {
     const format = req.query.format
 
 
-    
-    let width, height
-    if (widthString) {
-        width = Number(widthString)
-    }
-    if (heightString) {
-        height = Number(heightString)
-    }
     // TODO
     // if fileLocation does not include filename.jpg res.send(Not found)
     if (!filename) {
-        return res.status(400).send('Please provide image with name, width and height for resizing')
+        res.status(400).send('Please provide image with name, width and height for resizing')
     }
+
+     resize_image(fileLocation, Number(widthString), Number(heightString), filename, res)
     // TODO
     // if fileLocation does not match return file not found
-
     
-    writeFileToDisk(filename)
-    res.type(`image/${format || 'jpg'}`)
+  
+    //res.type(`image/${format || 'jpg'}`)
+    //  imageProcessedWithSharp(fileLocation, Number(widthString), Number(heightString), filename).pipe(res)
+    // imageProcessedWithSharp(fileLocation, width, height)
 
-        console.log("includes")
-        imageProcessedWithSharp(fileLocation, format, width, height).pipe(res)
 })
-
-
-    
