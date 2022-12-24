@@ -11,7 +11,7 @@ export const resize_image = async (image: string, width: number, height: number,
             .toFormat("jpeg", { mozjpeg: true })
             .toFile(thumbnailFile)
             .then(file => {
-                res.sendFile(thumbnailFile)
+                res.status(200).sendFile(thumbnailFile)
             })
         return result
     } catch (error) {
