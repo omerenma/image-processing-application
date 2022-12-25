@@ -1,0 +1,27 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+        "@typescript-eslint/no-var-requires": 0,
+      "no-use-before-define": ["error", { "functions": true, "classes": true }],
+      "no-var": "error",
+      "no-console": 0,
+      "prefer-const": "error"
+    },
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 2016
+    },
+    "env": {
+      "node": true,
+      "es6": true
+    }
+}

@@ -1,25 +1,23 @@
-const sharp = require('sharp')
-const fs = require('fs')
-import path from 'path'
-import { writeFileToDisk } from './writefile'
-
+const sharp = require("sharp");
+const fs = require("fs");
+const path =require("path");
 
 export const imageProcessedWithSharp =  async (paths: string, width: number, height: number, filename: string) => {
-    const readImage = fs.createReadStream(paths)
-    let transform = sharp
+    const readImage = fs.createReadStream(paths);
+    const transform = sharp;
 try {
-        const thumbnailPath = path.join(__dirname, '../images/thumbnails/')
-    const thumbnailFile = thumbnailPath + filename + '.' + 'jpg'
+        const thumbnailPath = path.join(__dirname, "../images/thumbnails/");
+    const thumbnailFile = thumbnailPath + filename + "." + "jpg";
       await transform(readImage)
             .resize(width, height)
             .toFormat("jpeg", { mozjpeg: true })
-            .toFile(thumbnailFile)
+            .toFile(thumbnailFile);
             
         } catch (error) {
-            return "Something went wrong"
+            return "Something went wrong";
         }
-    readImage.pipe(transform)
-    return transform
+    readImage.pipe(transform);
+    return transform;
 
     // if (width || height) {
     //    await transform(paths)
@@ -35,5 +33,5 @@ try {
     
     // readImage.pipe(transform)
     //  return transform
- }
+ };
 //module.exports =  imageProcessedWithSharp

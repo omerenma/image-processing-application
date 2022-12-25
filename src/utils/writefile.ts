@@ -1,13 +1,12 @@
 // import  fs from 'fs'
-import * as fs from 'node:fs/promises';
-import path from 'path'
+import * as fs from "node:fs/promises";
 
 export const writeFileToDisk =  (file: string | NodeJS.ArrayBufferView) => {
     try {
-        fs.writeFile('new_path', file)
+        fs.writeFile("new_path", file);
         //  fs.writeFileSync('dirname', file,  {flag:'a+'})
      
     } catch (error) {
-        console.log(error, 'error')
+        return error
     }
-}
+};

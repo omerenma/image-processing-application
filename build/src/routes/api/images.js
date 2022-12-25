@@ -21,18 +21,17 @@ exports.imagesRouter = express_1.default.Router();
 exports.imagesRouter.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     //  const fileLocation = path.resolve(__dirname + `../../images/encenadaport.jpg`)
     //  res.sendFile(`image/${fileLocation}`)
-    res.status(200).send('Hello');
+    res.status(200).send("Hello");
 }));
-exports.imagesRouter.get('/images', logger_1.logger, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.imagesRouter.get("/images", logger_1.logger, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const filename = req.query.filename;
     const fileLocation = path_1.default.resolve(__dirname, `../../images/${filename}.jpg`);
     const widthString = req.query.width;
     const heightString = req.query.height;
-    const format = req.query.format;
     // TODO
     // if fileLocation does not include filename.jpg res.send(Not found)
     if (!filename) {
-        res.status(400).send('Please provide image with name, width and height for resizing');
+        res.status(400).send("Please provide image with name, width and height for resizing");
     }
     yield (0, image_resize_1.resize_image)(fileLocation, Number(widthString), Number(heightString), filename, res);
 }));
