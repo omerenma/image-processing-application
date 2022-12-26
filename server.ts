@@ -1,18 +1,15 @@
-import express, {Application} from 'express'
-import {imagesRouter} from './src/routes/api/images'
+import express, { Application } from 'express';
+import { imagesRouter } from './src/routes/api/images';
 const app: Application = express();
+const port = 5000;
 
-
-app.use('/api', imagesRouter)
+app.use('/api', imagesRouter);
 app.get('/', (req, res) => {
-    res.send("Hello")
-})
+    res.send('Hello');
+});
 
-const port = 5000
 app.listen(port, () => {
-    return(`Server listening on port ${port}`)
-})
+    console.log(`Server listening on port ${port}`);
+});
 
-
-
-export default app
+export default app;

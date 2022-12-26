@@ -28,7 +28,7 @@ exports.writeFileToDisk = void 0;
 const fs = __importStar(require("node:fs/promises"));
 const writeFileToDisk = (file) => {
     try {
-        fs.writeFile("new_path", file);
+        fs.writeFile('new_path', file);
         //  fs.writeFileSync('dirname', file,  {flag:'a+'})
     }
     catch (error) {
