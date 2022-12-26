@@ -27,4 +27,4 @@
 - localhost:5000/api/images?filename='encenadaport.jpg'&width=200&height=200
 
 ## Image resize  functionality
-- Upon accessing the endpoint url with the query parameters, a new copy of the image is save to disk with  the location /assetes/thumbnails
+- Upon accessing the endpoint url with the query parametersc, a new copy of the image is save to disk with  the location /assetes/thumbnails
