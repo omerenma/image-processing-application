@@ -13,13 +13,12 @@ export const resize_image = async (
     try {
         const thumbnailPath = path.join(__dirname, '../../assets/thumbnails/');
         const thumbnailFile = `${thumbnailPath}${filename}${width}-${height}.jpg`;
-        const result = await sharp(image)
-        
+             const result = await sharp(image)
             .resize(width, height)
             .toFormat('jpeg', { mozjpeg: true })
             .toFile(thumbnailFile)
             .then(() => {
-                res.status(200).sendFile(thumbnailFile);
+               return res.status(200).sendFile(thumbnailFile);
             });
         return result;
     } catch (error) {
