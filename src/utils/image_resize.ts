@@ -13,9 +13,9 @@ export const resize_image = async (
    
     try {
         
-        const thumbnailPath = path.join(__dirname, '../../assets/thumbnails/');
+        const thumbnailPath = path.join(__dirname, '../assets/thumbnails/');
         const thumbnailFile = `${thumbnailPath}${filename}-${width}-${height}.jpg`;
-        
+
         if (fs.existsSync(`${thumbnailPath}/${filename}-${width}-${height}.jpg`)) {
             console.log('Exists.......');
             return  res.sendFile(`${thumbnailPath}/${filename}-${width}-${height}.jpg`);
