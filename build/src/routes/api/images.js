@@ -17,10 +17,9 @@ const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const image_resize_1 = require("../../utils/image_resize");
 const logger_1 = require("../../utils/logger");
+const validate_input_1 = require("../../utils/validate_input");
 exports.imagesRouter = express_1.default.Router();
 exports.imagesRouter.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    //  const fileLocation = path.resolve(__dirname + `../../images/encenadaport.jpg`)
-    //  res.sendFile(`image/${fileLocation}`)
     res.status(200).send('Hello');
 }));
 exports.imagesRouter.get('/images', logger_1.logger, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -28,11 +27,9 @@ exports.imagesRouter.get('/images', logger_1.logger, (req, res) => __awaiter(voi
     const fileLocation = path_1.default.resolve(__dirname, `../../images/${filename}.jpg`);
     const widthString = req.query.width;
     const heightString = req.query.height;
-    // TODO
-    // if fileLocation does not include filename.jpg res.send(Not found)
-    if (!filename || !widthString || !heightString) {
-        res.status(400).send('Unable to process! Please provide image with name, width and height for resizing');
-    }
+    // Validate user input
+    (0, validate_input_1.validate_input)(res, filename, Number(widthString), Number(heightString));
+    // Resize image
     yield (0, image_resize_1.resize_image)(fileLocation, Number(widthString), Number(heightString), filename, res);
 }));
 exports.default = exports.imagesRouter;
